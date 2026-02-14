@@ -1,174 +1,307 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Valentine Birthday 💖🎂</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Cypaa 🤍</title>
 
   <style>
     body {
       margin: 0;
-      font-family: "Comic Sans MS", cursive;
-      background: linear-gradient(to bottom, #ffb6c1, #ffe6f2);
+      font-family: "Poppins", sans-serif;
       overflow: hidden;
+      height: 100vh;
+      background: radial-gradient(circle, #fffaf3, #f5e6d3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      color: #3b1f1f;
     }
 
-    h1 {
-      margin-top: 70px;
-      font-size: 2.6em;
-      color: #ff1493;
-      text-shadow: 2px 2px white;
+    /* Glow Stars */
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite alternate;
     }
 
-    p {
-      font-size: 1.2em;
-      color: #444;
+    @keyframes twinkle {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+
+    /* Landing */
+    .landing {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(15px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      transition: 1s;
+    }
+
+    .landing h1 {
+      font-size: 2.8em;
+      font-family: "Georgia", serif;
+      margin-bottom: 10px;
+    }
+
+    .landing p {
+      max-width: 450px;
+      font-size: 1.1em;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .landing button {
+      padding: 14px 32px;
+      border: none;
+      border-radius: 40px;
+      background: #d4af7a;
+      color: white;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(212,175,122,0.5);
+      transition: 0.3s;
+    }
+
+    .landing button:hover {
+      transform: scale(1.08);
+    }
+
+    /* Main Card */
+    .card {
+      background: rgba(255,255,255,0.55);
+      padding: 45px;
+      border-radius: 35px;
+      box-shadow: 0 0 40px rgba(150,100,70,0.25);
+      backdrop-filter: blur(16px);
+      max-width: 460px;
+      display: none;
+      z-index: 5;
+    }
+
+    img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #d4af7a;
+      object-fit: cover;
+      margin-bottom: 18px;
+      box-shadow: 0 0 20px rgba(212,175,122,0.4);
+    }
+
+    h2 {
+      font-family: "Georgia", serif;
+      font-size: 2.2em;
+      margin: 0;
     }
 
     button {
-      margin-top: 20px;
-      padding: 12px 25px;
+      margin-top: 22px;
+      padding: 12px 26px;
       border: none;
-      border-radius: 25px;
-      background: hotpink;
+      border-radius: 35px;
+      background: #d4af7a;
       color: white;
-      font-size: 1.1em;
+      font-size: 1em;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      font-weight: bold;
+      transition: 0.3s;
     }
 
     button:hover {
-      transform: scale(1.07);
+      transform: scale(1.06);
     }
 
-    /* ❤️ Hati Jatuh */
-    .heart {
+    /* Popup Letter */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0,0,0,0.55);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .popup-content {
+      background: rgba(255,255,255,0.78);
+      padding: 38px;
+      border-radius: 28px;
+      max-width: 550px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 0 50px rgba(212,175,122,0.5);
+      animation: zoomIn 0.6s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.6); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .close {
+      margin-top: 18px;
+      background: #3b1f1f;
+    }
+
+    /* Falling Flowers */
+    .flower {
       position: absolute;
-      top: -20px;
-      font-size: 22px;
-      animation: fall 5s linear infinite;
-      color: red;
+      top: -10px;
+      font-size: 18px;
+      animation: fall linear infinite;
+      opacity: 0.65;
     }
 
     @keyframes fall {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(100vh); opacity: 0; }
+      from { transform: translateY(0); }
+      to { transform: translateY(110vh); }
     }
 
-    /* 🎈 Balon Ulang Tahun */
-    .balloon {
-      position: absolute;
-      bottom: -120px;
-      width: 60px;
-      height: 80px;
-      border-radius: 50%;
-      animation: floatUp 7s infinite ease-in;
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-1200px); }
-    }
-
-    /* 💌 Popup Surat */
-    .popup {
+    /* Valentine Question Page */
+    .valentine {
       display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-      width: 80%;
-      max-width: 350px;
-      z-index: 10;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 30;
     }
 
-    .popup h2 {
-      color: hotpink;
+    .valentine h2 {
+      font-size: 2.4em;
+      margin-bottom: 20px;
     }
 
-    .overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 9;
+    .yes {
+      background: #d4af7a;
+    }
+
+    .no {
+      background: #999;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- 🎶 Musik Autoplay -->
+  <!-- Musik -->
   <audio autoplay loop>
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
-  <h1>💖 Happy Valentine Birthday <span id="sypaa">Kamu</span> 🎂</h1>
-  <p>14 Februari ini bukan cuma Valentine...</p>
-  <p>Tapi juga hari ulang tahun orang paling spesial ❤️✨</p>
-
-  <button onclick="openLoveLetter()">Buka Surat Cinta 💌</button>
-
-  <!-- Popup -->
-  <div class="overlay" id="overlay" onclick="closeLoveLetter()"></div>
-
-  <div class="popup" id="popup">
-    <h2>💝 Surat Cinta + Ulang Tahun</h2>
+  <!-- Landing -->
+  <div class="landing" id="landing">
+    <h1>🤍 For Cypaa</h1>
     <p>
-      Selamat ulang tahun yaa 🎂💖<br>
-      Semoga hari kamu penuh cinta,<br>
-      tawa, dan kejutan manis 😆✨<br><br>
-      Kamu hadiah terbaik di tanggal 14 Februari ❤️
+      Aku bikin hadiah kecil yang elegan banget buat kamu…  
+      karena kamu pantas dapet sesuatu yang spesial ✨
     </p>
-    <button onclick="closeLoveLetter()">Tutup 💗</button>
+    <button onclick="startLove()">Open Surprise 💎</button>
+  </div>
+
+  <!-- Main Card -->
+  <div class="card" id="mainCard">
+    <img src="foto.jpg" alt="Cypaa">
+    <h2>Happy Birthday My Love 🎂</h2>
+    <p>
+      14 Februari ini bukan hanya Valentine…  
+      tapi juga hari lahir seseorang yang paling aku sayang 🤍
+    </p>
+    <button onclick="openPopup()">Read My Letter 💌</button>
+    <button onclick="goValentine()">One More Surprise 💖</button>
+  </div>
+
+  <!-- Popup Letter -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h2>Untuk Cypaa 🤍</h2>
+      <p>
+        Sayangku…  
+        kamu adalah alasan aku percaya cinta itu nyata.  
+        Aku bersyukur banget bisa mencintai kamu.  
+        <br><br>
+        Semoga ulang tahun ini membawa kebahagiaan,  
+        kesehatan, dan semua mimpi kamu tercapai ✨  
+        <br><br>
+        Happy Birthday & Happy Valentine, My Forever Love 🤍
+      </p>
+      <button class="close" onclick="closePopup()">Close ✨</button>
+    </div>
+  </div>
+
+  <!-- Valentine Page -->
+  <div class="valentine" id="valentinePage">
+    <h2>Cypaa… Will You Be My Valentine? 💖</h2>
+    <button class="yes" onclick="alert('YAYYY 😭💖 Aku sayang kamu selamanya!')">
+      YES 🤍
+    </button>
+    <button class="no" onclick="alert('Ga boleh nolak 😤💘')">
+      NO 🙈
+    </button>
   </div>
 
   <script>
-    // Nama otomatis dari URL
-    const params = new URLSearchParams(window.location.search);
-    const nama = params.get("nama");
-    if (nama) {
-      document.getElementById("nama").textContent = nama;
+    function startLove() {
+      document.getElementById("landing").style.opacity = "0";
+      setTimeout(() => {
+        document.getElementById("landing").style.display = "none";
+        document.getElementById("mainCard").style.display = "block";
+      }, 1000);
     }
 
-    // ❤️ Hati jatuh
-    setInterval(() => {
-      let heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-      document.body.appendChild(heart);
-
-      setTimeout(() => heart.remove(), 5000);
-    }, 300);
-
-    // 🎈 Balon naik
-    for (let i = 0; i < 8; i++) {
-      let balloon = document.createElement("div");
-      balloon.className = "balloon";
-      balloon.style.left = Math.random() * 100 + "vw";
-      balloon.style.background =
-        ["#ff69b4","#ff1493","#ffc0cb","#ffb6c1"][Math.floor(Math.random()*4)];
-      balloon.style.animationDuration = (5 + Math.random() * 4) + "s";
-      document.body.appendChild(balloon);
+    function openPopup() {
+      document.getElementById("popup").style.display = "flex";
     }
 
-    // Popup Surat
-    function openLoveLetter() {
-      document.getElementById("popup").style.display = "block";
-      document.getElementById("overlay").style.display = "block";
-    }
-
-    function closeLoveLetter() {
+    function closePopup() {
       document.getElementById("popup").style.display = "none";
-      document.getElementById("overlay").style.display = "none";
     }
+
+    function goValentine() {
+      document.getElementById("mainCard").style.display = "none";
+      document.getElementById("valentinePage").style.display = "flex";
+    }
+
+    // Stars
+    for (let i = 0; i < 25; i++) {
+      let star = document.createElement("div");
+      star.className = "star";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.top = Math.random() * 100 + "vh";
+      document.body.appendChild(star);
+    }
+
+    // Falling flowers
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.classList.add("flower");
+      flower.innerHTML = "🌸";
+
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.animationDuration = Math.random() * 4 + 4 + "s";
+      flower.style.fontSize = Math.random() * 15 + 12 + "px";
+
+      document.body.appendChild(flower);
+
+      setTimeout(() => flower.remove(), 8000);
+    }
+
+    setInterval(createFlower, 500);
   </script>
 
 </body>
