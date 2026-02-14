@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Valentine Birthday 💖🎂</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", cursive;
+      background: linear-gradient(to bottom, #ffb6c1, #ffe6f2);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 70px;
+      font-size: 2.6em;
+      color: #ff1493;
+      text-shadow: 2px 2px white;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #444;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      background: hotpink;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      transform: scale(1.07);
+    }
+
+    /* ❤️ Hati Jatuh */
+    .heart {
+      position: absolute;
+      top: -20px;
+      font-size: 22px;
+      animation: fall 5s linear infinite;
+      color: red;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    /* 🎈 Balon Ulang Tahun */
+    .balloon {
+      position: absolute;
+      bottom: -120px;
+      width: 60px;
+      height: 80px;
+      border-radius: 50%;
+      animation: floatUp 7s infinite ease-in;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-1200px); }
+    }
+
+    /* 💌 Popup Surat */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      width: 80%;
+      max-width: 350px;
+      z-index: 10;
+    }
+
+    .popup h2 {
+      color: hotpink;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🎶 Musik Autoplay -->
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <h1>💖 Happy Valentine Birthday <span id="sypaa">Kamu</span> 🎂</h1>
+  <p>14 Februari ini bukan cuma Valentine...</p>
+  <p>Tapi juga hari ulang tahun orang paling spesial ❤️✨</p>
+
+  <button onclick="openLoveLetter()">Buka Surat Cinta 💌</button>
+
+  <!-- Popup -->
+  <div class="overlay" id="overlay" onclick="closeLoveLetter()"></div>
+
+  <div class="popup" id="popup">
+    <h2>💝 Surat Cinta + Ulang Tahun</h2>
+    <p>
+      Selamat ulang tahun yaa 🎂💖<br>
+      Semoga hari kamu penuh cinta,<br>
+      tawa, dan kejutan manis 😆✨<br><br>
+      Kamu hadiah terbaik di tanggal 14 Februari ❤️
+    </p>
+    <button onclick="closeLoveLetter()">Tutup 💗</button>
+  </div>
+
+  <script>
+    // Nama otomatis dari URL
+    const params = new URLSearchParams(window.location.search);
+    const nama = params.get("nama");
+    if (nama) {
+      document.getElementById("nama").textContent = nama;
+    }
+
+    // ❤️ Hati jatuh
+    setInterval(() => {
+      let heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 5000);
+    }, 300);
+
+    // 🎈 Balon naik
+    for (let i = 0; i < 8; i++) {
+      let balloon = document.createElement("div");
+      balloon.className = "balloon";
+      balloon.style.left = Math.random() * 100 + "vw";
+      balloon.style.background =
+        ["#ff69b4","#ff1493","#ffc0cb","#ffb6c1"][Math.floor(Math.random()*4)];
+      balloon.style.animationDuration = (5 + Math.random() * 4) + "s";
+      document.body.appendChild(balloon);
+    }
+
+    // Popup Surat
+    function openLoveLetter() {
+      document.getElementById("popup").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
+    }
+
+    function closeLoveLetter() {
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
